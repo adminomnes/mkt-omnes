@@ -52,6 +52,10 @@ router.post('/lead', async (req, res) => {
       secuenciaInicio: new Date().toISOString()
     });
     
+    const imagenLead = imgGen.generarImagenLead(lead);
+    lead.imagenBienvenida = imagenLead;
+    db.updateLead(lead.id, { imagenBienvenida: imagenLead });
+    
     await emailSvc.enviarBienvenida(lead);
     
     db.addHistorial(lead.id, { 
@@ -65,6 +69,7 @@ router.post('/lead', async (req, res) => {
       success: true,
       message: `Lead capturado exitosamente - Área: ${datosArea.etiqueta}`,
       lead,
+      imagen: imagenLead,
       secuencia: `Secuencia de ${datosArea.etiqueta} iniciada automáticamente`
     });
   } catch (error) {
@@ -117,6 +122,10 @@ router.post('/webhook/lead', async (req, res) => {
       secuenciaInicio: new Date().toISOString()
     });
     
+    const imagenLead = imgGen.generarImagenLead(lead);
+    lead.imagenBienvenida = imagenLead;
+    db.updateLead(lead.id, { imagenBienvenida: imagenLead });
+    
     await emailSvc.enviarBienvenida(lead);
     
     db.addHistorial(lead.id, { 
@@ -129,7 +138,8 @@ router.post('/webhook/lead', async (req, res) => {
     res.status(201).json({
       success: true,
       message: `Lead capturado exitosamente - Área: ${datosArea.etiqueta}`,
-      lead
+      lead,
+      imagen: imagenLead
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
