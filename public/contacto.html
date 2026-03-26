@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMNES HOLDING | Contáctanos</title>
+  <link rel="stylesheet" href="/css/form.css">
+</head>
+<body class="form-page">
+  <div class="form-container">
+    <div class="form-header">
+      <h1>OMNES <span class="gold">HOLDING</span></h1>
+      <p>¿Estás listo para transformar tu negocio?</p>
+    </div>
+    
+    <form id="omnes-form" class="omnes-lead-form">
+      <div class="form-group">
+        <label for="nombre">Nombre completo *</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 1234 5678">
+      </div>
+      
+      <div class="form-group">
+        <label for="area">Área de interés</label>
+        <select id="area" name="area">
+          <option value="digital">Marketing Digital</option>
+          <option value="radio">Radio y Comunicación</option>
+          <option value="humanar">Bienestar y Salud</option>
+          <option value="consultoria">Consultoría Empresarial</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="submit-btn">¡Quiero más información!</button>
+    </form>
+    
+    <div class="form-footer">
+      <p>Nuestra IA analizará tu solicitud y te contactará en minutos.</p>
+    </div>
+  </div>
+
+  <script src="/js/form-connector.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const connector = new window.OmnesFormConnector({
+        formId: 'omnes-form',
+        showSuccess: true,
+        showError: true,
+        autoArea: 'digital'
+      });
+      connector.init();
+    });
+  </script>
+</body>
+</html>

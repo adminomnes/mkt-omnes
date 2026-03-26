@@ -1,0 +1,140 @@
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.form-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h1 {
+  color: #1a1a2e;
+  font-size: 28px;
+  margin: 0;
+}
+
+.form-header .gold {
+  color: #d4af37;
+}
+
+.form-header p {
+  color: #666;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.omnes-lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #d4af37;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+  color: #1a1a2e;
+  border: none;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  font-size: 14px;
+}
+
+.omnes-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  z-index: 10000;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+.omnes-message.success {
+  background: #10b981;
+  color: white;
+}
+
+.omnes-message.error {
+  background: #ef4444;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
