@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMNES HOLDING | Marketing Automatizado</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <h1>OMNES <span class="gold">HOLDING</span></h1>
+        <p>Sistema de Marketing Automatizado</p>
+      </div>
+      <nav>
+        <button class="nav-btn active" onclick="showSection('dashboard')">Dashboard</button>
+        <button class="nav-btn" onclick="showSection('leads')">Leads</button>
+        <button class="nav-btn" onclick="showSection('content')">Contenido</button>
+        <button class="nav-btn" onclick="showSection('config')">Configuración</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="dashboard" class="section active">
+        <h2>Panel de Control</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="stat-total">0</div>
+            <div class="stat-label">Total Leads</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-nuevos">0</div>
+            <div class="stat-label">Nuevos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-proceso">0</div>
+            <div class="stat-label">En Proceso</div>
+          </div>
+          <div class="stat-card gold-card">
+            <div class="stat-value" id="stat-convertidos">0</div>
+            <div class="stat-label">Convertidos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-tasa">0%</div>
+            <div class="stat-label">Tasa Conversión</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="stat-emails">0</div>
+            <div class="stat-label">Emails Enviados</div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Leads Prioritarios</h3>
+          <div id="prioritarios-list" class="prioritarios-list"></div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Acciones Rapidas</h3>
+          <div class="actions">
+            <button class="action-btn" onclick="triggerSecuencia()">▶ Procesar Secuencia</button>
+            <button class="action-btn" onclick="actualizarStats()">↻ Actualizar</button>
+            <button class="action-btn" onclick="showSection('leads')">→ Ver Todos los Leads</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="leads" class="section">
+        <h2>Gestión de Leads</h2>
+        <div class="filters">
+          <input type="text" id="search-lead" placeholder="Buscar por nombre o email..." onkeyup="filterLeads()">
+          <select id="filter-estado" onchange="filterLeads()">
+            <option value="">Todos los estados</option>
+            <option value="nuevo">Nuevo</option>
+            <option value="en_proceso">En Proceso</option>
+            <option value="convertido">Convertido</option>
+          </select>
+          <select id="filter-area" onchange="filterLeads()">
+            <option value="">Todas las áreas</option>
+            <option value="RADIO">RADIO</option>
+            <option value="HUMANAR">HUMANAR</option>
+            <option value="DIGITAL">DIGITAL</option>
+            <option value="CONSULTORIA">CONSULTORIA</option>
+          </select>
+        </div>
+        <div id="leads-table"></div>
+      </section>
+
+      <section id="content" class="section">
+        <h2>Generador de Contenido</h2>
+        
+        <div class="panel-section">
+          <h3>Generar Copy para Redes</h3>
+          <div class="form-group">
+            <select id="content-servicio">
+              <option value="DIGITAL">DIGITAL - Marketing y crecimiento</option>
+              <option value="RADIO">RADIO - Contenido comunicacional</option>
+              <option value="HUMANAR">HUMANAR - Bienestar y terapias</option>
+              <option value="CONSULTORIA">CONSULTORIA - Estrategia empresarial</option>
+              <option value="tecnologia">Tecnología (legacy)</option>
+              <option value="bienestar">Bienestar (legacy)</option>
+              <option value="negocio">Negocio (legacy)</option>
+            </select>
+            <button class="action-btn" onclick="generarCopy()">Generar</button>
+          </div>
+          <div id="copy-result" class="result-box"></div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Generar Imagen Publicitaria</h3>
+          <div class="form-group">
+            <textarea id="img-texto" placeholder="Texto para la imagen..." rows="3"></textarea>
+            <select id="img-tipo">
+              <option value="cuadrado">Cuadrado (1080x1080)</option>
+              <option value="vertical">Vertical (1080x1920)</option>
+              <option value="horizontal">Horizontal (1920x1080)</option>
+            </select>
+            <button class="action-btn" onclick="generarImagen()">Generar Imagen</button>
+          </div>
+          <div id="img-result"></div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Imágenes Creadas</h3>
+          <div id="imagenes-list" class="imagenes-grid"></div>
+        </div>
+      </section>
+
+      <section id="config" class="section">
+        <h2>Configuración del Sistema</h2>
+        
+        <div class="panel-section">
+          <h3>Estado de Automatizaciones</h3>
+          <div class="toggle-group">
+            <label class="toggle">
+              <input type="checkbox" id="auto-enabled" checked onchange="saveConfig()">
+              <span class="toggle-slider"></span>
+            </label>
+            <span>Habilitar automatizaciones</span>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Configuración de Email (SMTP)</h3>
+          <div class="form-grid">
+            <input type="text" id="smtp-host" placeholder="Servidor SMTP">
+            <input type="number" id="smtp-port" placeholder="Puerto">
+            <input type="text" id="smtp-user" placeholder="Usuario">
+            <input type="password" id="smtp-pass" placeholder="Contraseña">
+            <input type="text" id="email-from" placeholder="Email remitente" value="OMNES HOLDING <noreply@omnes.holding>">
+          </div>
+          <button class="action-btn" onclick="saveEmailConfig()">Guardar Config Email</button>
+        </div>
+
+        <div class="panel-section">
+          <h3>Secuencia de Emails</h3>
+          <div id="secuencia-list"></div>
+        </div>
+
+        <div class="panel-section">
+          <h3>Prueba de Webhook</h3>
+          <div class="form-group">
+            <input type="text" id="test-nombre" placeholder="Nombre">
+            <input type="email" id="test-email" placeholder="Email">
+            <input type="text" id="test-telefono" placeholder="Teléfono (opcional)">
+            <select id="test-area">
+              <option value="digital">DIGITAL</option>
+              <option value="radio">RADIO</option>
+              <option value="humanar">HUMANAR</option>
+              <option value="consultoria">CONSULTORIA</option>
+            </select>
+            <button class="action-btn" onclick="testWebhook()">Enviar Lead de Prueba</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

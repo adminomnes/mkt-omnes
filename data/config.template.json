@@ -1,0 +1,22 @@
+{
+  "automations": {
+    "enabled": true,
+    "secuencia": {
+      "dia0": { "enabled": true, "subject": "Bienvenido a OMNES HOLDING", "template": "bienvenida" },
+      "dia1": { "enabled": true, "subject": "Contenido de valor para ti", "template": "contenido" },
+      "dia3": { "enabled": true, "subject": "Beneficios exclusivos", "template": "beneficios" },
+      "dia5": { "enabled": true, "subject": "Caso de éxito", "template": "caso" },
+      "dia7": { "enabled": true, "subject": "Oferta especial", "template": "oferta" }
+    }
+  },
+  "email": {
+    "from": "OMNES HOLDING <contacto@omnes.cl>",
+    "resendApiKey": "YOUR_RESEND_API_KEY",
+    "smtp": { "host": "", "port": 587, "user": "", "pass": "" }
+  },
+  "servicios": [
+    { "id": "tecnologia", "nombre": "Tecnología", "descripcion": "Soluciones tech innovadoras" },
+    { "id": "bienestar", "nombre": "Bienestar", "descripcion": "Programas de bienestar integral" },
+    { "id": "negocio", "nombre": "Negocio", "descripcion": "Desarrollo empresarial" }
+  ]
+}
