@@ -55,17 +55,15 @@ class EmailService {
       if (!trimmed) return;
       
       if (trimmed.startsWith('•') || trimmed.startsWith('-')) {
-        content += `<li style="margin: 12px 0; color: #333; font-size: 15px; line-height: 1.6;">${trimmed}</li>`;
-      } else if (trimmed.startsWith('✓') || trimmed.startsWith('✓')) {
-        content += `<li style="margin: 12px 0; color: #0066cc; font-size: 15px; line-height: 1.6;">${trimmed}</li>`;
+        content += `<li style="margin: 14px 0; color: #2c3e50; font-size: 15px; line-height: 1.7; padding-left: 8px;">${trimmed}</li>`;
+      } else if (trimmed.startsWith('✓')) {
+        content += `<li style="margin: 14px 0; color: #0066cc; font-size: 15px; line-height: 1.7; font-weight: 500;">${trimmed}</li>`;
       } else if (trimmed.startsWith('📞') || trimmed.startsWith('📅') || trimmed.startsWith('🚀') || trimmed.startsWith('🔗')) {
-        content += `<p style="color: #0066cc; font-size: 15px; font-weight: 600; margin: 15px 0;">${trimmed}</p>`;
+        content += `<p style="color: #0066cc; font-size: 16px; font-weight: 600; margin: 20px 0 15px; padding: 15px; background: linear-gradient(135deg, #f0f7ff, #e6f2ff); border-radius: 10px; border-left: 4px solid #0066cc;">${trimmed}</p>`;
       } else {
-        content += `<p style="color: #333; font-size: 15px; line-height: 1.8; margin: 12px 0;">${trimmed}</p>`;
+        content += `<p style="color: #2c3e50; font-size: 15px; line-height: 1.8; margin: 14px 0;">${trimmed}</p>`;
       }
     });
-    
-    const logoUrl = process.env.RENDER ? `https://${process.env.RENDER_EXTERNAL_URL}/images/logo-correos.png` : 'https://mkt-omnes.onrender.com/images/logo-correos.png';
     
     return `<!DOCTYPE html>
 <html lang="es">
@@ -74,92 +72,180 @@ class EmailService {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OMNES HOLDING</title>
 </head>
-<body style="margin: 0; padding: 0; background: #f0f4f8; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<body style="margin: 0; padding: 0; background: #e8ecf1; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
   
-  <table width="100%" cellpadding="0" cellspacing="0" style="background: #f0f4f8; padding: 40px 20px;">
+  <!-- Wrapper principal -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(180deg, #e8ecf1 0%, #d4dce8 100%); padding: 50px 15px;">
     <tr>
       <td align="center">
-        <table width="650" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,102,204,0.15);">
-          
-          <!-- Header azul con logo -->
+        
+        <!-- Logo Card -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 120px; margin-bottom: 30px;">
           <tr>
-            <td style="background: linear-gradient(135deg, #003366 0%, #0066cc 50%, #0088ff 100%); padding: 45px 40px; text-align: center;">
-              <img src="https://mkt-omnes.onrender.com/images/logo-correos.png" alt="OMNES HOLDING" style="max-width: 220px; height: auto; margin-bottom: 20px;">
-              <div style="width: 80px; height: 4px; background: #ffffff; margin: 0 auto; border-radius: 2px;"></div>
+            <td style="text-align: center;">
+              <img src="https://mkt-omnes.onrender.com/images/logo-correos.png" alt="OMNES HOLDING" style="max-width: 120px; height: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
+            </td>
+          </tr>
+        </table>
+        
+        <!-- Email Card Principal -->
+        <table width="680" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 80px rgba(0,51,102,0.12), 0 10px 30px rgba(0,0,0,0.08);">
+          
+          <!-- Header Premium -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #002855 0%, #003d99 40%, #0052cc 70%, #0073e6 100%); padding: 50px 50px 45px; text-align: center; position: relative;">
+              <!-- Efecto de brillo superior -->
+              <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);"></div>
+              
+              <p style="margin: 0 0 8px; color: rgba(255,255,255,0.7); font-size: 11px; text-transform: uppercase; letter-spacing: 4px; font-weight: 500;">Bienvenido a</p>
+              <h1 style="margin: 0 0 5px; color: #ffffff; font-size: 36px; font-weight: 700; letter-spacing: 6px;">OMNES</h1>
+              <p style="margin: 0 0 20px; color: rgba(255,255,255,0.9); font-size: 14px; letter-spacing: 8px; font-weight: 300;">HOLDING</p>
+              
+              <!-- Línea decorativa elegante -->
+              <table width="60" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                <tr>
+                  <td style="height: 2px; background: linear-gradient(90deg, transparent, #ffffff, transparent);"></td>
+                </tr>
+              </table>
             </td>
           </tr>
           
-          <!-- Línea decorativa azul -->
+          <!-- Línea decorativa bajo header -->
           <tr>
-            <td style="height: 5px; background: linear-gradient(90deg, #003366, #0066cc, #0088ff, #003366);"></td>
+            <td style="height: 6px; background: linear-gradient(90deg, #002855, #0066cc, #0073e6, #002855);"></td>
           </tr>
           
-          <!-- Saludo -->
+          <!-- Contenido Principal -->
           <tr>
-            <td style="padding: 40px 45px 20px; background: #ffffff;">
-              <h2 style="margin: 0 0 10px; color: #003366; font-size: 22px; font-weight: 600;">¡Bienvenido/a!</h2>
-              <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">Gracias por tu interés en OMNES HOLDING. Estamos encantados de tenerte con nosotros.</p>
-            </td>
-          </tr>
-          
-          <!-- Contenido -->
-          <tr>
-            <td style="padding: 20px 45px 30px; background: #ffffff;">
-              <ul style="margin: 0; padding-left: 25px;">
+            <td style="padding: 50px 55px 40px; background: #ffffff;">
+              
+              <!-- Saludo Elegante -->
+              <div style="margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid #eaeff5;">
+                <h2 style="margin: 0 0 12px; color: #002855; font-size: 26px; font-weight: 600; letter-spacing: -0.5px;">¡Bienvenido/a!</h2>
+                <p style="margin: 0; color: #5a6c7d; font-size: 15px; line-height: 1.7;">Gracias por confiar en nosotros. Estamos comprometidos con tu éxito yremos trabajando para brindarte el mejor servicio.</p>
+              </div>
+              
+              <!-- Contenido -->
+              <ul style="margin: 0; padding-left: 0; list-style: none;">
                 ${content}
               </ul>
+              
             </td>
           </tr>
           
-          <!-- Botón CTA -->
+          <!-- CTA Premium -->
           <tr>
-            <td style="padding: 0 45px 35px; text-align: center;">
-              <a href="https://www.omnes.cl" style="display: inline-block; background: linear-gradient(135deg, #0066cc 0%, #0088ff 100%); color: #ffffff; text-decoration: none; padding: 18px 50px; border-radius: 50px; font-weight: 700; font-size: 16px; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(0,102,204,0.35);">
-                VISITAR NUESTRA WEB
-              </a>
-            </td>
-          </tr>
-          
-          <!-- Servicios -->
-          <tr>
-            <td style="background: linear-gradient(135deg, #f8fafc 0%, #e8f4fc 100%); padding: 35px 45px;">
-              <p style="margin: 0 0 20px 0; font-size: 13px; color: #003366; text-transform: uppercase; letter-spacing: 2px; text-align: center; font-weight: 600;">Nuestros Servicios</p>
+            <td style="padding: 0 55px 45px; background: #ffffff;">
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="text-align: center; padding: 8px 5px;">
-                    <span style="display: inline-block; background: linear-gradient(135deg, #003366, #0066cc); color: #ffffff; padding: 12px 18px; border-radius: 10px; font-size: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,102,204,0.2);">📻 Radio Me Gusta</span>
-                  </td>
-                  <td style="text-align: center; padding: 8px 5px;">
-                    <span style="display: inline-block; background: linear-gradient(135deg, #003366, #0066cc); color: #ffffff; padding: 12px 18px; border-radius: 10px; font-size: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,102,204,0.2);">💚 Humanar</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="text-align: center; padding: 8px 5px;">
-                    <span style="display: inline-block; background: linear-gradient(135deg, #003366, #0066cc); color: #ffffff; padding: 12px 18px; border-radius: 10px; font-size: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,102,204,0.2);">💻 Digital Omnes</span>
-                  </td>
-                  <td style="text-align: center; padding: 8px 5px;">
-                    <span style="display: inline-block; background: linear-gradient(135deg, #003366, #0066cc); color: #ffffff; padding: 12px 18px; border-radius: 10px; font-size: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,102,204,0.2);">📊 Omnes Consultoria</span>
+                  <td style="background: linear-gradient(135deg, #0066cc 0%, #0073e6 100%); border-radius: 14px; text-align: center; padding: 3px;">
+                    <a href="https://www.omnes.cl" style="display: block; background: linear-gradient(135deg, #0073e6 0%, #0088ff 100%); color: #ffffff; text-decoration: none; padding: 20px 40px; border-radius: 12px; font-weight: 600; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; box-shadow: 0 8px 25px rgba(0,102,204,0.35);">
+                      Visit our Website →
+                    </a>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
           
-          <!-- Footer -->
+          <!-- Servicios Section -->
           <tr>
-            <td style="background: linear-gradient(135deg, #003366 0%, #004488 100%); padding: 35px 40px; text-align: center;">
-              <p style="margin: 0 0 8px 0; font-size: 18px; color: #ffffff; font-weight: 700; letter-spacing: 2px;">OMNES HOLDING</p>
-              <p style="margin: 0 0 15px 0; font-size: 12px; color: rgba(255,255,255,0.7);">Innovación | Bienestar | Prosperidad</p>
-              <div style="width: 40px; height: 2px; background: rgba(255,255,255,0.3); margin: 0 auto 15px;"></div>
-              <p style="margin: 0; font-size: 11px; color: rgba(255,255,255,0.6);">
-                © 2024 OMNES HOLDING. Todos los derechos reservados.<br>
+            <td style="background: linear-gradient(180deg, #f8fafc 0%, #f0f4f8 100%); padding: 40px 55px;">
+              
+              <p style="margin: 0 0 25px; font-size: 12px; color: #002855; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; text-align: center;">Our Services</p>
+              
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 10px;">
+                <tr>
+                  <td width="50%" style="padding: 0 8px 16px 0; vertical-align: top;">
+                    <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #002855, #003d99); border-radius: 12px; overflow: hidden;">
+                      <tr>
+                        <td style="padding: 18px 15px; text-align: center;">
+                          <p style="margin: 0 0 4px; font-size: 20px;">📻</p>
+                          <p style="margin: 0; color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">Radio Me Gusta</p>
+                          <p style="margin: 5px 0 0; color: rgba(255,255,255,0.6); font-size: 10px;">Communication</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="50%" style="padding: 0 0 16px 8px; vertical-align: top;">
+                    <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #002855, #003d99); border-radius: 12px; overflow: hidden;">
+                      <tr>
+                        <td style="padding: 18px 15px; text-align: center;">
+                          <p style="margin: 0 0 4px; font-size: 20px;">💚</p>
+                          <p style="margin: 0; color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">Humanar</p>
+                          <p style="margin: 5px 0 0; color: rgba(255,255,255,0.6); font-size: 10px;">Wellness</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="50%" style="padding: 0 8px 0 0; vertical-align: top;">
+                    <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #002855, #003d99); border-radius: 12px; overflow: hidden;">
+                      <tr>
+                        <td style="padding: 18px 15px; text-align: center;">
+                          <p style="margin: 0 0 4px; font-size: 20px;">💻</p>
+                          <p style="margin: 0; color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">Digital Omnes</p>
+                          <p style="margin: 5px 0 0; color: rgba(255,255,255,0.6); font-size: 10px;">Marketing</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="50%" style="padding: 0 0 0 8px; vertical-align: top;">
+                    <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #002855, #003d99); border-radius: 12px; overflow: hidden;">
+                      <tr>
+                        <td style="padding: 18px 15px; text-align: center;">
+                          <p style="margin: 0 0 4px; font-size: 20px;">📊</p>
+                          <p style="margin: 0; color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">Omnes Consultoria</p>
+                          <p style="margin: 5px 0 0; color: rgba(255,255,255,0.6); font-size: 10px;">Strategy</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              
+            </td>
+          </tr>
+          
+          <!-- Footer Premium -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #001a33 0%, #002855 50%, #003d99 100%); padding: 45px 50px; text-align: center;">
+              
+              <p style="margin: 0 0 6px; color: #ffffff; font-size: 20px; font-weight: 700; letter-spacing: 4px;">OMNES</p>
+              <p style="margin: 0 0 20px; color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 3px;">HOLDING</p>
+              
+              <p style="margin: 0 0 25px; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.8;">Innovation • Wellbeing • Prosperity</p>
+              
+              <table width="50" cellpadding="0" cellspacing="0" style="margin: 0 auto 25px;">
+                <tr>
+                  <td style="height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);"></td>
+                </tr>
+              </table>
+              
+              <p style="margin: 0; font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.8;">
+                © 2024 OMNES HOLDING. All rights reserved.<br>
                 Antofagasta, Chile<br>
-                <a href="https://www.omnes.cl" style="color: #66b3ff; text-decoration: none;">www.omnes.cl</a>
+                <a href="https://www.omnes.cl" style="color: #66b3ff; text-decoration: none; font-weight: 500;">www.omnes.cl</a>
               </p>
+              
             </td>
           </tr>
           
         </table>
+        
+        <!-- Espacio inferior -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 200px; margin-top: 35px;">
+          <tr>
+            <td style="text-align: center;">
+              <p style="margin: 0; color: #8896a6; font-size: 11px; letter-spacing: 1px;">Innovación | Bienestar | Prosperidad</p>
+            </td>
+          </tr>
+        </table>
+        
       </td>
     </tr>
   </table>
