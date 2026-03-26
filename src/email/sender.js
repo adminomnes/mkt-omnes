@@ -55,13 +55,13 @@ class EmailService {
       if (!trimmed) return;
       
       if (trimmed.startsWith('•') || trimmed.startsWith('-')) {
-        content += `<li style="margin: 12px 0; color: #e0e0e0; font-size: 15px; line-height: 1.6;">${trimmed}</li>`;
+        content += `<li style="margin: 12px 0; color: #333; font-size: 15px; line-height: 1.6;">${trimmed}</li>`;
       } else if (trimmed.startsWith('✓') || trimmed.startsWith('✓')) {
         content += `<li style="margin: 12px 0; color: #22c55e; font-size: 15px; line-height: 1.6;">${trimmed}</li>`;
       } else if (trimmed.startsWith('📞') || trimmed.startsWith('📅') || trimmed.startsWith('🚀') || trimmed.startsWith('🔗')) {
         content += `<p style="color: #D4AF37; font-size: 15px; font-weight: 600; margin: 15px 0;">${trimmed}</p>`;
       } else {
-        content += `<p style="color: #e0e0e0; font-size: 15px; line-height: 1.8; margin: 12px 0;">${trimmed}</p>`;
+        content += `<p style="color: #333; font-size: 15px; line-height: 1.8; margin: 12px 0;">${trimmed}</p>`;
       }
     });
     
@@ -72,19 +72,18 @@ class EmailService {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OMNES HOLDING</title>
 </head>
-<body style="margin: 0; padding: 0; background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<body style="margin: 0; padding: 0; background: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   
-  <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%); padding: 40px 20px;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+        <table width="600" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
           
           <!-- Header con logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%); padding: 40px 30px; text-align: center;">
-              <h1 style="margin: 0; font-size: 32px; font-weight: 700; color: #D4AF37; letter-spacing: 3px;">OMNES</h1>
-              <p style="margin: 8px 0 0 0; font-size: 14px; color: #888; letter-spacing: 2px;">HOLDING</p>
-              <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #D4AF37, #f4d03f); margin: 20px auto 0; border-radius: 2px;"></div>
+            <td style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%); padding: 35px 30px; text-align: center;">
+              <img src="https://www.omnes.cl/HOLDING.png" alt="OMNES HOLDING" style="max-width: 200px; height: auto; margin-bottom: 15px;">
+              <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #D4AF37, #f4d03f); margin: 0 auto; border-radius: 2px;"></div>
             </td>
           </tr>
           
@@ -117,17 +116,19 @@ class EmailService {
               <p style="margin: 0 0 15px 0; font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 2px;">Nuestros Servicios</p>
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="text-align: center;">
-                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600;">RADIO</span>
+                  <td style="text-align: center; padding: 5px;">
+                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 10px 14px; border-radius: 8px; font-size: 11px; font-weight: 600;">Radio Me Gusta</span>
                   </td>
-                  <td style="text-align: center;">
-                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600;">HUMANAR</span>
+                  <td style="text-align: center; padding: 5px;">
+                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 10px 14px; border-radius: 8px; font-size: 11px; font-weight: 600;">Humanar</span>
                   </td>
-                  <td style="text-align: center;">
-                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600;">DIGITAL</span>
+                </tr>
+                <tr>
+                  <td style="text-align: center; padding: 5px;">
+                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 10px 14px; border-radius: 8px; font-size: 11px; font-weight: 600;">Digital Omnes</span>
                   </td>
-                  <td style="text-align: center;">
-                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600;">CONSULTORÍA</span>
+                  <td style="text-align: center; padding: 5px;">
+                    <span style="display: inline-block; background: #0a0a0f; color: #D4AF37; padding: 10px 14px; border-radius: 8px; font-size: 11px; font-weight: 600;">Omnes Consultoria</span>
                   </td>
                 </tr>
               </table>
@@ -138,10 +139,11 @@ class EmailService {
           <tr>
             <td style="background: #0a0a0f; padding: 30px; text-align: center;">
               <p style="margin: 0 0 8px 0; font-size: 14px; color: #D4AF37; font-weight: 600;">OMNES HOLDING</p>
-              <p style="margin: 0 0 15px 0; font-size: 12px; color: #666;">Innovación | Bienestar | Prosperidad</p>
-              <p style="margin: 0; font-size: 11px; color: #444;">
+              <p style="margin: 0 0 15px 0; font-size: 12px; color: #888;">Innovación | Bienestar | Prosperidad</p>
+              <p style="margin: 0; font-size: 11px; color: #555;">
                 © 2024 OMNES HOLDING. Todos los derechos reservados.<br>
-                Antofagasta, Chile
+                Antofagasta, Chile<br>
+                <a href="https://www.omnes.cl" style="color: #D4AF37; text-decoration: none;">www.omnes.cl</a>
               </p>
             </td>
           </tr>

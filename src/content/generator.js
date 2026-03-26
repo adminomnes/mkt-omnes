@@ -1,8 +1,8 @@
 const areaTemplates = {
   RADIO: {
     bienvenida: {
-      subject: 'Bienvenido a OMNES RADIO - Contenido comunicacional',
-      intro: 'Gracias por confiar en OMNES RADIO. Tu interés marca el inicio de una transformación en tu comunicación.',
+      subject: 'Bienvenido a Radio Me Gusta - OMNES HOLDING',
+      intro: 'Gracias por confiar en Radio Me Gusta. Tu interés marca el inicio de una transformación en tu comunicación.',
       pilares: ['Contenido Comunicacional', 'Posicionamiento de Marca', 'Estrategia de Medios']
     },
     contenido: {
@@ -10,7 +10,7 @@ const areaTemplates = {
       puntos: ['Creación de contenido diferenciador', 'Estrategias de posicionamiento', 'Construcción de audiencia']
     },
     beneficios: {
-      sujeto: 'nuestros clientes de radio',
+      sujeto: 'nuestros clientes de Radio Me Gusta',
       beneficios: ['Mayor alcance y fidelización', 'Contenido que conecta', 'Resultados medibles en audiencia']
     },
     caso: {
@@ -20,8 +20,8 @@ const areaTemplates = {
   },
   HUMANAR: {
     bienvenida: {
-      subject: 'Bienvenido a OMNES HUMANAR - Tu bienestar primero',
-      intro: 'Gracias por confiar en OMNES HUMANAR. Tu interés marca el inicio de tu transformación hacia el bienestar integral.',
+      subject: 'Bienvenido a Humanar - Tu bienestar primero',
+      intro: 'Gracias por confiar en Humanar. Tu interés marca el inicio de tu transformación hacia el bienestar integral.',
       pilares: ['Bienestar', 'Terapias', 'Desarrollo Personal']
     },
     contenido: {
@@ -29,7 +29,7 @@ const areaTemplates = {
       puntos: ['Terapias personalizadas', 'Equilibrio cuerpo-mente', 'Programas de desarrollo']
     },
     beneficios: {
-      sujeto: 'nuestros clientes de HUMANAR',
+      sujeto: 'nuestros clientes de Humanar',
       beneficios: ['Vida más plena y saludable', 'Terapias efectivas', 'Transformación real']
     },
     caso: {
@@ -39,8 +39,8 @@ const areaTemplates = {
   },
   DIGITAL: {
     bienvenida: {
-      subject: 'Bienvenido a OMNES DIGITAL - Marketing que transforma',
-      intro: 'Gracias por confiar en OMNES DIGITAL. Tu interés marca el inicio de tu crecimiento digital.',
+      subject: 'Bienvenido a Digital Omnes - Marketing que transforma',
+      intro: 'Gracias por confiar en Digital Omnes. Tu interés marca el inicio de tu crecimiento digital.',
       pilares: ['Marketing Digital', 'Crecimiento de Negocio', 'Transformación Online']
     },
     contenido: {
@@ -48,7 +48,7 @@ const areaTemplates = {
       puntos: ['Estrategias digitales efectivas', 'Crecimiento medible', 'Presencia online estratégica']
     },
     beneficios: {
-      sujeto: 'nuestros clientes digitales',
+      sujeto: 'nuestros clientes de Digital Omnes',
       beneficios: ['Aumentos de ventas documentados', 'Presencia digital sólida', 'ROI garantizado']
     },
     caso: {
@@ -58,8 +58,8 @@ const areaTemplates = {
   },
   CONSULTORIA: {
     bienvenida: {
-      subject: 'Bienvenido a OMNES CONSULTORIA - Estrategia empresarial',
-      intro: 'Gracias por confiar en OMNES CONSULTORIA. Tu interés marca el inicio de la transformación de tu empresa.',
+      subject: 'Bienvenido a Omnes Consultoria - Estrategia empresarial',
+      intro: 'Gracias por confiar en Omnes Consultoria. Tu interés marca el inicio de la transformación de tu empresa.',
       pilares: ['Estrategia', 'Optimización Empresarial', 'Crecimiento']
     },
     contenido: {
@@ -67,7 +67,7 @@ const areaTemplates = {
       puntos: ['Análisis profundo de tu negocio', 'Planificación estratégica', 'Optimización de procesos']
     },
     beneficios: {
-      sujeto: 'nuestros clientes de consultoria',
+      sujeto: 'nuestros clientes de Omnes Consultoria',
       beneficios: ['Eficiencia operativa demostrada', 'Crecimiento sostenible', 'Ventaja competitiva']
     },
     caso: {
