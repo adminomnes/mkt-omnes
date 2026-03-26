@@ -194,133 +194,113 @@ class ContentGenerator {
   }
 
   generarEmailBienvenida(nombre, area = 'DIGITAL') {
-    const areaData = this.getAreaData(area);
-    const pillars = areaData.bienvenida.pilares.join('\n• ');
+    const areaNombres = {
+      RADIO: 'Radio Me Gusta',
+      HUMANAR: 'Humanar',
+      DIGITAL: 'Digital Omnes',
+      CONSULTORIA: 'Omnes Consultoria'
+    };
+    const areaNombre = areaNombres[area] || area;
     
     return {
-      subject: areaData.bienvenida.subject,
+      subject: `Bienvenido/a a OMNES HOLDING - ${areaNombre}`,
       body: `Estimado/a ${nombre},
 
-${areaData.bienvenida.intro}
+Gracias por contactar a OMNES HOLDING.
 
-Nuestros pilares:
-• ${pillars}
+Hemos recibido tu información y uno de nuestros especialistas del área ${areaNombre} se pondrá en contacto contigo a la brevedad.
 
-En los próximos días recibirás contenido exclusivo diseñado específicamente para ti.
-
-Mientras tanto, no dudes en contactarnos si tienes alguna consulta.
-
-Atentamente,
-Equipo OMNES HOLDING
-
-"El futuro pertenece a quienes se preparan hoy."`
+Equipo OMNES HOLDING`
     };
   }
 
   generarEmailContenido(nombre, area = 'DIGITAL') {
-    const areaData = this.getAreaData(area);
-    const points = areaData.contenido.puntos.join('\n• ');
+    const areaNombres = {
+      RADIO: 'Radio Me Gusta',
+      HUMANAR: 'Humanar',
+      DIGITAL: 'Digital Omnes',
+      CONSULTORIA: 'Omnes Consultoria'
+    };
+    const areaNombre = areaNombres[area] || area;
     
     return {
-      subject: `Contenido: ${areaData.contenido.tema}`,
-      body: `Hola ${nombre},
+      subject: `Contenido de valor - OMNES ${areaNombre}`,
+      body: `Estimado/a ${nombre},
 
-Hoy quiero compartir contigo insights sobre ${areaData.contenido.tema.toLowerCase()}.
+Gracias por tu interés en ${areaNombre}.
 
-En OMNES HOLDING creemos que el conocimiento es poder. Por eso cada pieza de contenido que te enviamos está diseñada para darte una ventaja competitiva.
+Estamos preparando contenido exclusivo para ti. Mientras tanto, no dudes en contactarnos si tienes alguna consulta.
 
-${this.generarCopyAds(area.toLowerCase(), 'captacion')}
+Uno de nuestros especialistas se pondrá en contacto contigo pronto.
 
-Esta semana te invito a explorar más sobre cómo podemos ayudarte:
-
-• ${points}
-
-¿Hablamos?
-
-Saludos cordiales,
 Equipo OMNES HOLDING`
     };
   }
 
   generarEmailBeneficios(nombre, area = 'DIGITAL') {
-    const areaData = this.getAreaData(area);
-    const benefits = areaData.beneficios.beneficios.join('\n✓ ');
+    const areaNombres = {
+      RADIO: 'Radio Me Gusta',
+      HUMANAR: 'Humanar',
+      DIGITAL: 'Digital Omnes',
+      CONSULTORIA: 'Omnes Consultoria'
+    };
+    const areaNombre = areaNombres[area] || area;
     
     return {
-      subject: `Beneficios exclusivos - OMNES ${area}`,
-      body: `Hola ${nombre},
+      subject: `Beneficios OMNES ${areaNombre}`,
+      body: `Estimado/a ${nombre},
 
-Déjame contarte por qué cientos de clientes han elegido OMNES ${area}:
+Gracias por seguir en contacto con nosotros.
 
-✓ ${benefits}
-✓ Atención personalizada y estratégica
-✓ Metodologías probadas con casos de éxito reales
-✓ Compromiso real con tu crecimiento
+En OMNES HOLDING trabajamos para brindarte el mejor servicio. Pronto recibirás más información sobre cómo podemos ayudarte.
 
-Tu satisfacción es nuestro mayor logro. No vendemos servicios, construimos relaciones duraderas.
-
-¿Te gustaría descubrir cómo podemos ayudarte específicamente?
-
-Responde a este correo o agenda tu llamada de descubrimiento.
-
-Equipo OMNES HOLDING
-Tu socio estratégico`
+Equipo OMNES HOLDING`
     };
   }
 
   generarEmailCaso(nombre, area = 'DIGITAL') {
-    const areaData = this.getAreaData(area);
+    const areaNombres = {
+      RADIO: 'Radio Me Gusta',
+      HUMANAR: 'Humanar',
+      DIGITAL: 'Digital Omnes',
+      CONSULTORIA: 'Omnes Consultoria'
+    };
+    const areaNombre = areaNombres[area] || area;
     
     return {
-      subject: `Caso de éxito: ${areaData.caso.titulo}`,
-      body: `Hola ${nombre},
+      subject: `Caso de éxito - OMNES ${areaNombre}`,
+      body: `Estimado/a ${nombre},
 
-Hoy quiero compartirte una historia que ilustra el poder de trabajar con OMNES.
+Continuamos trabajando para ti.
 
-CASE STUDY: ${areaData.caso.titulo}
-Situación: Empresa enfrentaba desafíos de crecimiento
-Solución: Implementación de estrategia OMNES ${area}
-Resultado: ${areaData.caso.resultado}
+En OMNES HOLDING nos esforzamos por generar resultados significativos para cada uno de nuestros clientes.
 
-"OMNES no solo nos dio resultados, nos dio una nueva forma de crecer." - Cliente OMNES
-
-Cada caso es único, pero los resultados son consistentes: transformación real y medible.
-
-¿Listo para escribir tu propia historia de éxito?
-
-Hablemos.
+Te mantendremos informado/a sobre las novedades.
 
 Equipo OMNES HOLDING`
     };
   }
 
   generarEmailOferta(nombre, area = 'DIGITAL') {
-    const areaData = this.getAreaData(area);
+    const areaNombres = {
+      RADIO: 'Radio Me Gusta',
+      HUMANAR: 'Humanar',
+      DIGITAL: 'Digital Omnes',
+      CONSULTORIA: 'Omnes Consultoria'
+    };
+    const areaNombre = areaNombres[area] || area;
     
     return {
-      subject: `Oferta especial ${area}: Tu momento de actuar`,
-      body: `Hola ${nombre},
+      subject: `Contacto OMNES ${areaNombre}`,
+      body: `Estimado/a ${nombre},
 
-Este es el momento.
+Nos hemos mantenido en contacto contigo para ofrecerte el mejor servicio posible.
 
-Después de días de contenido, casos de éxito y beneficios, es momento de que tomes una decisión.
+Si tienes alguna consulta o deseas agendar una reunión, no dudes en contactarnos.
 
-OFERTA ESPECIAL para nuevos clientes de OMNES ${area}:
-• Consulta estratégica gratuita (valor $300)
-• Plan de acción personalizado
-• Análisis detallado de tu situación actual
+Estamos aquí para ayudarte.
 
-Esta oferta tiene tiempo limitado. No dejamos pasar las oportunidades.
-
-Próximo paso: Agenda tu llamada de descubrimiento
-
-📞 Responder este correo
-📅 Reservar tu espacio: [Link de agendamiento]
-
-El futuro pertenece a quienes actúan.
-
-Equipo OMNES HOLDING
-"Transforma tu visión en realidad"`
+Equipo OMNES HOLDING`
     };
   }
 
