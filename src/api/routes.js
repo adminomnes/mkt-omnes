@@ -52,7 +52,7 @@ router.post('/lead', async (req, res) => {
       secuenciaInicio: new Date().toISOString()
     });
     
-    const imagenLead = imgGen.generarImagenLead(lead);
+    const imagenLead = await imgGen.generarImagenLead(lead);
     lead.imagenBienvenida = imagenLead;
     db.updateLead(lead.id, { imagenBienvenida: imagenLead });
     
@@ -122,7 +122,7 @@ router.post('/webhook/lead', async (req, res) => {
       secuenciaInicio: new Date().toISOString()
     });
     
-    const imagenLead = imgGen.generarImagenLead(lead);
+    const imagenLead = await imgGen.generarImagenLead(lead);
     lead.imagenBienvenida = imagenLead;
     db.updateLead(lead.id, { imagenBienvenida: imagenLead });
     

@@ -1,5 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const { v2: cloudinary } = require('cloudinary');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'dgebvkptg',
+  api_key: process.env.CLOUDINARY_API_KEY || '186121942892293',
+  api_secret: process.env.CLOUDINARY_API_SECRET || '5qzAOvc7nFPNrCqcyT3HRNSMM9w'
+});
 
 class ImageGenerator {
   constructor() {
@@ -55,6 +62,28 @@ class ImageGenerator {
     return lines;
   }
 
+  async subirACloudinary(svgContent, folder, publicId) {
+    return new Promise((resolve, reject) => {
+      cloudinary.uploader.upload(
+        `data:image/svg+xml;base64,${Buffer.from(svgContent).toString('base64')}`,
+        {
+          folder: `omnes/${folder}`,
+          public_id: publicId,
+          resource_type: 'image',
+          format: 'png'
+        },
+        (error, result) => {
+          if (error) {
+            console.error('Cloudinary error:', error);
+            resolve(null);
+          } else {
+            resolve(result.secure_url);
+          }
+        }
+      );
+    });
+  }
+
   generarImagenRedes(texto, tipo = 'cuadrado') {
     const sizes = {
       cuadrado: { width: 1080, height: 1080 },
@@ -75,11 +104,11 @@ class ImageGenerator {
     svg += `</g>`;
     svg += this.svgFooter();
     
-    const filename = `redes_${tipo}_${Date.now()}.svg`;
-    const filepath = path.join(this.outputDir, filename);
+    const filename = `redes_${tipo}_${Date.now()}`;
+    const filepath = path.join(this.outputDir, `${filename}.svg`);
     fs.writeFileSync(filepath, svg);
     
-    return `/images/${filename}`;
+    return `/images/${filename}.svg`;
   }
 
   generarBannerPromocional(titulo, subtitulo, cta = 'Contáctanos') {
@@ -93,11 +122,11 @@ class ImageGenerator {
   <text x="50%" y="70%" text-anchor="middle" font-family="Arial" font-size="16" fill="#ffffff" font-weight="bold">${cta}</text>`;
     svg += this.svgFooter();
     
-    const filename = `banner_${Date.now()}.svg`;
-    const filepath = path.join(this.outputDir, filename);
+    const filename = `banner_${Date.now()}`;
+    const filepath = path.join(this.outputDir, `${filename}.svg`);
     fs.writeFileSync(filepath, svg);
     
-    return `/images/${filename}`;
+    return `/images/${filename}.svg`;
   }
 
   generarContenidoCorporativo(tipo = 'presentacion') {
@@ -123,14 +152,14 @@ class ImageGenerator {
   <text x="50%" y="55%" text-anchor="middle" font-family="Arial" font-size="32" fill="#888888">${subtitulos[tipo] || subtitulos.presentacion}</text>`;
     svg += this.svgFooter();
     
-    const filename = `corporativo_${tipo}_${Date.now()}.svg`;
-    const filepath = path.join(this.outputDir, filename);
+    const filename = `corporativo_${tipo}_${Date.now()}`;
+    const filepath = path.join(this.outputDir, `${filename}.svg`);
     fs.writeFileSync(filepath, svg);
     
-    return `/images/${filename}`;
+    return `/images/${filename}.svg`;
   }
 
-  generarImagenLead(lead) {
+  async generarImagenLead(lead) {
     const width = 1080;
     const height = 1080;
     
@@ -147,26 +176,35 @@ class ImageGenerator {
     
     let svg = this.svgHeader(width, height);
     
-    svg += `  <circle cx="${width/2}" cy="320" r="100" fill="none" stroke="url(#accent)" stroke-width="3"/>
-  <text x="${width/2}" y="330}" text-anchor="middle" font-family="Arial" font-size="60" fill="#ffffff" font-weight="bold">${nombreMostrar.charAt(0).toUpperCase()}</text>
+    svg += `<circle cx="${width/2}" cy="320" r="100" fill="none" stroke="url(#accent)" stroke-width="3"/>
+  <text x="${width/2}" y="330" text-anchor="middle" font-family="Arial" font-size="60" fill="#ffffff" font-weight="bold">${nombreMostrar.charAt(0).toUpperCase()}</text>
   
-  <text x="${width/2}" y="480}" text-anchor="middle" font-family="Arial" font-size="50" font-weight="bold" fill="#ffffff">¡Bienvenido/a!</text>
-  <text x="${width/2}" y="540}" text-anchor="middle" font-family="Arial" font-size="36" fill="#0066cc" font-weight="bold">${nombreMostrar}</text>
+  <text x="${width/2}" y="480" text-anchor="middle" font-family="Arial" font-size="50" font-weight="bold" fill="#ffffff">¡Bienvenido/a!</text>
+  <text x="${width/2}" y="540" text-anchor="middle" font-family="Arial" font-size="36" fill="#0066cc" font-weight="bold">${nombreMostrar}</text>
   
   <rect x="25%" y="590" width="50%" height="2" fill="#333"/>
   
-  <text x="${width/2}" y="660}" text-anchor="middle" font-family="Arial" font-size="20" fill="#888888">Área de atención</text>
-  <text x="${width/2}" y="700}" text-anchor="middle" font-family="Arial" font-size="28" fill="#0066cc" font-weight="bold">${areaNombre}</text>
+  <text x="${width/2}" y="660" text-anchor="middle" font-family="Arial" font-size="20" fill="#888888">Área de atención</text>
+  <text x="${width/2}" y="700" text-anchor="middle" font-family="Arial" font-size="28" fill="#0066cc" font-weight="bold">${areaNombre}</text>
   
-  <text x="${width/2}" y="780}" text-anchor="middle" font-family="Arial" font-size="16" fill="#666666">${fecha}</text>`;
+  <text x="${width/2}" y="780" text-anchor="middle" font-family="Arial" font-size="16" fill="#666666">${fecha}</text>`;
     
     svg += this.svgFooter();
     
-    const filename = `lead_${lead.id || Date.now()}.svg`;
-    const filepath = path.join(this.outputDir, filename);
-    fs.writeFileSync(filepath, svg);
+    const publicId = `lead_${lead.id || Date.now()}`;
     
-    return `/images/${filename}`;
+    try {
+      const url = await this.subirACloudinary(svg, 'leads', publicId);
+      if (url) {
+        return url;
+      }
+    } catch (e) {
+      console.error('Error subiendo a Cloudinary:', e);
+    }
+    
+    const filepath = path.join(this.outputDir, `${publicId}.svg`);
+    fs.writeFileSync(filepath, svg);
+    return `/images/${publicId}.svg`;
   }
 
   listImages() {
