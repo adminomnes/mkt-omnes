@@ -53,7 +53,7 @@ class EmailService {
     lines.forEach(line => {
       const trimmed = line.trim();
       if (!trimmed) return;
-      bodyContent += `<p style="margin: 0 0 18px; color: #e0e0e0; font-size: 15px; line-height: 1.8;">${trimmed}</p>`;
+      bodyContent += `<p style="margin: 0 0 12px; color: #cccccc; font-size: 14px; line-height: 1.6;">${trimmed}</p>`;
     });
     
     return `<!DOCTYPE html>
@@ -65,40 +65,40 @@ class EmailService {
 </head>
 <body style="margin: 0; padding: 0; background: #0a0a0f; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
   
-  <table width="100%" cellpadding="0" cellspacing="0" style="background: #0a0a0f; padding: 50px 20px;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background: #0a0a0f; padding: 30px 15px;">
     <tr>
       <td align="center">
         
-        <table width="600" cellpadding="0" cellspacing="0" style="background: #12121a; border-radius: 16px; overflow: hidden; max-width: 600px;">
+        <table width="580" cellpadding="0" cellspacing="0" style="background: #12121a; border-radius: 12px; overflow: hidden; max-width: 580px;">
           
           <!-- Header con logo -->
           <tr>
-            <td style="padding: 50px 40px 40px; text-align: center; background: #0a0a0f;">
-              <img src="https://mkt-omnes.onrender.com/images/logo-correos.png" alt="OMNES HOLDING" style="max-width: 180px; height: auto; margin-bottom: 30px;">
-              <div style="width: 60px; height: 1px; background: linear-gradient(90deg, transparent, #666, transparent); margin: 0 auto;"></div>
+            <td style="padding: 35px 40px 25px; text-align: center; background: #0a0a0f;">
+              <img src="https://mkt-omnes.onrender.com/images/logo-correos.png" alt="OMNES HOLDING" style="max-width: 160px; height: auto; margin-bottom: 20px;">
+              <div style="width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #666, transparent); margin: 0 auto;"></div>
             </td>
           </tr>
           
           <!-- Línea decorativa -->
           <tr>
-            <td style="height: 1px; background: linear-gradient(90deg, transparent, #333, #555, #333, transparent);"></td>
+            <td style="height: 1px; background: linear-gradient(90deg, transparent, #444, transparent);"></td>
           </tr>
           
           <!-- Contenido -->
           <tr>
-            <td style="padding: 45px 50px; background: #12121a;">
+            <td style="padding: 30px 40px; background: #12121a;">
               ${bodyContent}
             </td>
           </tr>
           
-          <!-- Área seleccionada -->
+          <!-- Área destacada -->
           <tr>
-            <td style="padding: 0 50px 40px; background: #12121a;">
-              <table width="100%" cellpadding="0" cellspacing="0" style="background: #1a1a25; border-radius: 12px; border: 1px solid #2a2a3a;">
+            <td style="padding: 0 40px 25px; background: #12121a;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="background: #1a1a25; border-radius: 8px; border: 1px solid #2a2a3a;">
                 <tr>
-                  <td style="padding: 20px 25px; text-align: center;">
-                    <p style="margin: 0 0 5px; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 2px;">Área de atención</p>
-                    <p style="margin: 0; color: #ffffff; font-size: 16px; font-weight: 600; letter-spacing: 1px;">Ecosistema de estrategia, tecnología y bienestar</p>
+                  <td style="padding: 15px 20px; text-align: center;">
+                    <p style="margin: 0 0 3px; color: #6699cc; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">Área de atención</p>
+                    <p style="margin: 0; color: #6699cc; font-size: 13px; font-weight: 600; letter-spacing: 0.5px;">Ecosistema de estrategia, tecnología y bienestar</p>
                   </td>
                 </tr>
               </table>
@@ -107,8 +107,8 @@ class EmailService {
           
           <!-- Botón -->
           <tr>
-            <td style="padding: 0 50px 40px; background: #12121a; text-align: center;">
-              <a href="https://www.omnes.cl" style="display: inline-block; background: transparent; color: #ffffff; text-decoration: none; padding: 16px 40px; border-radius: 8px; font-weight: 600; font-size: 14px; letter-spacing: 1px; border: 1px solid #555;">
+            <td style="padding: 0 40px 25px; background: #12121a; text-align: center;">
+              <a href="https://www.omnes.cl" style="display: inline-block; background: transparent; color: #6699cc; text-decoration: none; padding: 12px 30px; border-radius: 6px; font-weight: 600; font-size: 13px; letter-spacing: 1px; border: 1px solid #6699cc;">
                 Visitar www.omnes.cl
               </a>
             </td>
@@ -116,16 +116,15 @@ class EmailService {
           
           <!-- Footer -->
           <tr>
-            <td style="background: #0a0a0f; padding: 35px 50px; text-align: center; border-top: 1px solid #222;">
-              <p style="margin: 0 0 8px; color: #ffffff; font-size: 14px; font-weight: 600; letter-spacing: 3px;">OMNES HOLDING</p>
-              <p style="margin: 0 0 20px; color: #666; font-size: 11px; letter-spacing: 1px;">Innovación | Bienestar | Prosperidad</p>
-              <div style="width: 40px; height: 1px; background: #333; margin: 0 auto 20px;"></div>
-              <p style="margin: 0 0 8px; color: #888; font-size: 12px;">
+            <td style="background: #0a0a0f; padding: 25px 40px; text-align: center; border-top: 1px solid #222;">
+              <p style="margin: 0 0 5px; color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 2px;">OMNES HOLDING</p>
+              <p style="margin: 0 0 15px; color: #666; font-size: 10px; letter-spacing: 1px;">Innovación | Bienestar | Prosperidad</p>
+              <div style="width: 30px; height: 1px; background: #333; margin: 0 auto 15px;"></div>
+              <p style="margin: 0 0 5px; color: #6699cc; font-size: 11px;">
                 📧 contacto@omnes.cl | 📞 Antofagasta, Chile
               </p>
-              <p style="margin: 20px 0 0; color: #555; font-size: 10px;">
-                © 2024 OMNES HOLDING. Todos los derechos reservados.<br>
-                Este mensaje fue enviado a través de nuestro sistema automático.
+              <p style="margin: 12px 0 0; color: #555; font-size: 9px;">
+                © 2024 OMNES HOLDING. Todos los derechos reservados.
               </p>
             </td>
           </tr>
